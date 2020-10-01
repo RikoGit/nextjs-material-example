@@ -9,6 +9,6 @@ export default () => (
       <meta name="viewport" content="width=device-width, initial-scale=1" />
       <title>Nextjs-material-example</title>
     </Head>
-    <p>Test</p>
+    <p>Test 2</p>
   </div>
 );
