@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next build && next start"
+  },
+  "engines": {
+    "node": "14"
   },
   "repository": {
     "type": "git",
