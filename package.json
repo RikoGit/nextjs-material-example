@@ -1,0 +1,31 @@
+{
+  "name": "nextjs-material-example",
+  "version": "0.0.1",
+  "description": "Deploy Next.js server-side React apps to Heroku",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start -p 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RikoGit/nextjs-material-example.git"
+  },
+  "keywords": [
+    "next",
+    "react",
+    "material"
+  ],
+  "author": "RikoGit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RikoGit/nextjs-material-example/issues"
+  },
+  "homepage": "https://github.com/RikoGit/nextjs-material-example#readme",
+  "dependencies": {
+    "next": "^9.5.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
