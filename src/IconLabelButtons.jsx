@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CloseIcon from "@material-ui/icons/Close";
 import CreateIcon from "@material-ui/icons/Create";
+import Hidden from "@material-ui/core/Hidden";
+import withWidth from "@material-ui/core/withWidth";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -27,10 +29,10 @@ const IconLabelButtons = ({ isEdit, onClick }) => {
         endIcon={isEdit ? <CloseIcon /> : <CreateIcon />}
         onClick={() => onClick(!isEdit)}
       >
-        {isEdit ? "ЗАКРЫТЬ" : "РЕДАКТИРОВАТЬ"}
+        <Hidden only="sm">{isEdit ? "ЗАКРЫТЬ" : "РЕДАКТИРОВАТЬ"}</Hidden>
       </Button>
     </div>
   );
 };
 
-export default IconLabelButtons;
+export default withWidth()(IconLabelButtons);

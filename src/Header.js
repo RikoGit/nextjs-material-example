@@ -5,6 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Badge from "@material-ui/core/Badge";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
+import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -22,6 +23,14 @@ const useStyles = makeStyles((theme) => ({
   title: {},
   buttons: {
     marginLeft: "auto",
+  },
+  buttontext: {
+    fontFamily: "Open Sans",
+    fontStyle: "normal",
+    fontWeight: "600",
+    fontSize: "14px",
+    lineHeight: "19px",
+    color: "#fff",
   },
 }));
 
@@ -62,9 +71,16 @@ const Header = () => {
             color="inherit"
             startIcon={<AccountCircle />}
           >
-            <Typography color="textPrimary" variant="h6" noWrap>
-              Иванова А.
-            </Typography>
+            <Hidden only="sm">
+              <Typography
+                color="textPrimary"
+                className={classes.buttontext}
+                variant="h6"
+                noWrap
+              >
+                Иванова А.
+              </Typography>
+            </Hidden>
           </Button>
         </div>
       </Toolbar>
