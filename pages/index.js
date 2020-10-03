@@ -1,14 +1,17 @@
 import React from "react";
-import Head from "next/head";
+import Container from "@material-ui/core/Container";
+import Grid from "@material-ui/core/Grid";
 
-export default () => (
-  <div className="root">
-    <Head>
-      <meta charSet="utf-8" />
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <title>Nextjs-material-example</title>
-    </Head>
-    <p>Test 2</p>
-  </div>
-);
+import Header from "../src/Header.js";
+import Main from "../src/Main.js";
+
+export default function Index() {
+  return (
+    <Container>
+      <Grid container direction="row" justify="center" alignItems="center">
+        <Header />
+        <Main />
+      </Grid>
+    </Container>
+  );
+}
