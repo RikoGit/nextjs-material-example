@@ -10,15 +10,13 @@ import IconButton from "@material-ui/core/IconButton";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import withWidth from "@material-ui/core/withWidth";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     boxShadow: "none",
     background: "none",
-  },
-  grow: {
-    flexGrow: 1,
   },
   title: {},
   buttons: {
@@ -71,7 +69,7 @@ const Header = () => {
             color="inherit"
             startIcon={<AccountCircle />}
           >
-            <Hidden only="sm">
+            <Hidden only="xs">
               <Typography
                 color="textPrimary"
                 className={classes.buttontext}
@@ -88,4 +86,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default withWidth()(Header);

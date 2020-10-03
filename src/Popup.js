@@ -27,6 +27,14 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     border: "none",
     boxShadow: "none",
+    [theme.breakpoints.down("xs")]: {
+      margin: "0",
+      bottom: "0",
+      height: "426px",
+      top: "auto",
+      width: "100%",
+      borderRadius: "20px 20px 0 0",
+    },
   },
   title: {
     "& > * ": {

@@ -25,14 +25,11 @@ const theme = createMuiTheme({
     },
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)",
     borderRadius: "10px",
-    breakpoints: {
-      values: {
-        xs: 0,
-        sm: 600,
-        md: 960,
-        lg: 1280,
-        xl: 1920,
-      },
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 767,
     },
   },
 });

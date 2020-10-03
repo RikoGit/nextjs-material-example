@@ -4,9 +4,11 @@ import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import Divider from "@material-ui/core/Divider";
 import Grid from "@material-ui/core/Grid";
+import Hidden from "@material-ui/core/Hidden";
 import Paper from "@material-ui/core/Paper";
 import PhoneIcon from "@material-ui/icons/Phone";
 import TextField from "@material-ui/core/TextField";
+import withWidth from "@material-ui/core/withWidth";
 
 import Popup from "./Popup";
 
@@ -27,6 +29,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "space-between",
   },
+  item: {
+    [theme.breakpoints.only("xs")]: {
+      margin: "0 0 39px 0",
+    },
+  },
   textfield: {
     width: "254px",
     height: "57px",
@@ -43,10 +50,12 @@ const InfoEdit = () => {
     <form className={classes.root} noValidate autoComplete="off">
       <Paper className={classes.paper}>
         <Grid container spacing={1} className={classes.container}>
-          <Grid item>
-            <AssignmentIndIcon fontSize="large" className={classes.icon} />
-          </Grid>
-          <Grid item>
+          <Hidden only="xs">
+            <Grid item>
+              <AssignmentIndIcon fontSize="large" className={classes.icon} />
+            </Grid>
+          </Hidden>
+          <Grid item className={classes.item}>
             <TextField
               className={classes.textfield}
               error
@@ -57,15 +66,17 @@ const InfoEdit = () => {
               helperText="Вы неверно указали имя"
             />
           </Grid>
-          <Divider
-            orientation="vertical"
-            flexItem
-            className={classes.divider}
-          />
-          <Grid item>
-            <AlternateEmailIcon fontSize="large" className={classes.icon} />
-          </Grid>
-          <Grid item>
+          <Hidden only="xs">
+            <Divider
+              orientation="vertical"
+              flexItem
+              className={classes.divider}
+            />
+            <Grid item>
+              <AlternateEmailIcon fontSize="large" className={classes.icon} />
+            </Grid>
+          </Hidden>
+          <Grid item className={classes.item}>
             <TextField
               className={classes.textfield}
               id="input-with-icon-grid"
@@ -74,15 +85,17 @@ const InfoEdit = () => {
               variant="outlined"
             />
           </Grid>
-          <Divider
-            orientation="vertical"
-            flexItem
-            className={classes.divider}
-          />
-          <Grid item>
-            <PhoneIcon fontSize="large" className={classes.icon} />
-          </Grid>
-          <Grid item>
+          <Hidden only="xs">
+            <Divider
+              orientation="vertical"
+              flexItem
+              className={classes.divider}
+            />
+            <Grid item>
+              <PhoneIcon fontSize="large" className={classes.icon} />
+            </Grid>
+          </Hidden>
+          <Grid item className={classes.item}>
             <TextField
               className={classes.textfield}
               id="input-with-icon-grid"

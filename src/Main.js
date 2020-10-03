@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     margin: "0 0 24px 0",
+    flexWrap: "nowrap",
     width: "100%",
     padding: theme.spacing(2),
     background: theme.palette.background.main,
@@ -35,6 +36,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "600",
     fontSize: "30px",
     lineHeight: "41px",
+    [theme.breakpoints.only("xs")]: {
+      fontSize: "14px",
+    },
   },
   button: {
     marginLeft: "auto",
