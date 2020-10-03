@@ -11,6 +11,7 @@ import PhoneIcon from "@material-ui/icons/Phone";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    margin: "0 0 24px 0",
     width: "100%",
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.palette.boxShadow,
@@ -21,6 +22,15 @@ const useStyles = makeStyles((theme) => ({
   },
   divider: {
     border: "1px solid #CAE7FE",
+  },
+  text: {
+    "& > span": {
+      fontFamily: "Open Sans",
+      fontWeight: "normal",
+      fontSize: "18px",
+      lineHeight: "25px",
+      color: "#313131",
+    },
   },
 }));
 
@@ -34,14 +44,17 @@ const Info = () => {
           <ListItemAvatar>
             <AlternateEmailIcon className={classes.icon} />
           </ListItemAvatar>
-          <ListItemText primary="Ivanova@mail.ru" />
+          <ListItemText primary="Ivanova@mail.ru" className={classes.text} />
         </ListItem>
         <Divider className={classes.divider} />
         <ListItem>
           <ListItemAvatar>
             <PhoneIcon className={classes.icon} />
           </ListItemAvatar>
-          <ListItemText primary="Укажите номер телефона" />
+          <ListItemText
+            primary="Укажите номер телефона"
+            className={classes.text}
+          />
         </ListItem>
       </List>
     </Paper>

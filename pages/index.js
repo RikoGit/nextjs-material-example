@@ -8,12 +8,15 @@ import Main from "../src/Main.js";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    position: "absolute",
-    width: "1481px",
-    height: "470px",
-    left: "-41px",
-    top: "0px",
+    margin: "auto",
+    padding: "0",
+    width: "1365px",
+    maxWidth: "1365px",
     background: "linear-gradient(270deg, #2196F3 0%, #1EC3AF 101.06%)",
+    minHeight: "100vh",
+  },
+  container: {
+    padding: "0 23px",
   },
 }));
 
@@ -22,7 +25,13 @@ export default function Index() {
 
   return (
     <Container className={classes.root}>
-      <Grid container direction="column" justify="center" alignItems="center">
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+        className={classes.container}
+      >
         <Header />
         <Main />
       </Grid>

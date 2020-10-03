@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import AppBar from "@material-ui/core/AppBar";
 import Badge from "@material-ui/core/Badge";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
@@ -10,26 +11,17 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    boxShadow: "none",
+    background: "none",
+  },
   grow: {
     flexGrow: 1,
   },
-  title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
-  },
-  sectionDesktop: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
-    },
-  },
-  sectionMobile: {
-    display: "flex",
-    [theme.breakpoints.up("md")]: {
-      display: "none",
-    },
+  title: {},
+  buttons: {
+    marginLeft: "auto",
   },
 }));
 
@@ -37,15 +29,25 @@ const Header = () => {
   const classes = useStyles();
 
   return (
-    <>
+    <AppBar position="static" className={classes.root}>
       <Toolbar>
-        <Typography className={classes.title} variant="h6" noWrap>
+        <Typography
+          className={classes.title}
+          variant="h6"
+          color="textPrimary"
+          noWrap
+        >
           Личный профиль
         </Typography>
-        <Typography className={classes.title} variant="h6" noWrap>
+        <Typography
+          className={classes.title}
+          variant="h6"
+          color="textPrimary"
+          noWrap
+        >
           Главная/Личный профиль
         </Typography>
-        <div className={classes.sectionDesktop}>
+        <div className={classes.buttons}>
           <IconButton aria-label="notification-icon" color="inherit">
             <Badge badgeContent={0}>
               <NotificationsNoneIcon />
@@ -60,11 +62,13 @@ const Header = () => {
             color="inherit"
             startIcon={<AccountCircle />}
           >
-            Иванова А.
+            <Typography color="textPrimary" variant="h6" noWrap>
+              Иванова А.
+            </Typography>
           </Button>
         </div>
       </Toolbar>
-    </>
+    </AppBar>
   );
 };
 

@@ -16,27 +16,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function IconLabelButtons() {
+const IconLabelButtons = ({ isEdit, onClick }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <Button
         variant="text"
-        color="secondary"
         className={classes.button}
-        endIcon={<CreateIcon />}
+        endIcon={isEdit ? <CloseIcon /> : <CreateIcon />}
+        onClick={() => onClick(!isEdit)}
       >
-        РЕДАКТИРОВАТЬ
-      </Button>
-      <Button
-        variant="text"
-        color="default"
-        className={classes.button}
-        endIcon={<CloseIcon />}
-      >
-        ЗАКРЫТЬ
+        {isEdit ? "ЗАКРЫТЬ" : "РЕДАКТИРОВАТЬ"}
       </Button>
     </div>
   );
-}
+};
+
+export default IconLabelButtons;
