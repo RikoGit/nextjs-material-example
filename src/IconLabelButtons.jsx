@@ -5,8 +5,14 @@ import CloseIcon from "@material-ui/icons/Close";
 import CreateIcon from "@material-ui/icons/Create";
 
 const useStyles = makeStyles((theme) => ({
+  root: {},
   button: {
+    fontFamily: "Open Sans",
+    fontSize: "14px",
+    fontWeight: "600",
+    lineHeight: "19px",
     margin: theme.spacing(1),
+    color: "#fff",
   },
 }));
 
@@ -14,7 +20,7 @@ export default function IconLabelButtons() {
   const classes = useStyles();
 
   return (
-    <div>
+    <div className={classes.root}>
       <Button
         variant="text"
         color="secondary"

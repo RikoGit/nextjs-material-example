@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 import PhoneIcon from "@material-ui/icons/Phone";
 import TextField from "@material-ui/core/TextField";
 
@@ -12,11 +13,14 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
       margin: theme.spacing(1),
-      width: "25ch",
     },
   },
-  margin: {
+  icon: {
+    color: theme.palette.primary.light,
+  },
+  paper: {
     margin: theme.spacing(1),
+    backgroundColor: theme.palette.background.paper,
   },
 }));
 
@@ -25,10 +29,10 @@ const InfoEdit = () => {
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
-      <div className={classes.margin}>
+      <Paper className={classes.paper}>
         <Grid container spacing={1} alignItems="flex-end">
           <Grid item>
-            <AssignmentIndIcon color="secondary" />
+            <AssignmentIndIcon className={classes.icon} />
           </Grid>
           <Grid item>
             <TextField
@@ -41,7 +45,7 @@ const InfoEdit = () => {
             />
           </Grid>
           <Grid item>
-            <AlternateEmailIcon color="secondary" />
+            <AlternateEmailIcon className={classes.icon} />
           </Grid>
           <Grid item>
             <TextField
@@ -52,7 +56,7 @@ const InfoEdit = () => {
             />
           </Grid>
           <Grid item>
-            <PhoneIcon color="secondary" />
+            <PhoneIcon className={classes.icon} />
           </Grid>
           <Grid item>
             <TextField
@@ -62,9 +66,11 @@ const InfoEdit = () => {
               variant="outlined"
             />
           </Grid>
+          <Grid item>
+            <ButtonSave />
+          </Grid>
         </Grid>
-      </div>
-      <ButtonSave />
+      </Paper>
     </form>
   );
 };

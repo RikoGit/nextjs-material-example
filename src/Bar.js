@@ -8,10 +8,23 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    width: "100%",
+    padding: theme.spacing(2),
+    background: theme.palette.background.main,
+    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)",
+    borderRadius: "10px",
+    color: "#fff",
+    marginBottom: "24px",
+  },
+  container: {
     flexGrow: 1,
   },
-  control: {
-    padding: theme.spacing(2),
+  title: {
+    fontFamily: "Open Sans",
+    fontStyle: "normal",
+    fontWeight: "600",
+    fontSize: "30px",
+    lineHeight: "41px",
   },
 }));
 
@@ -19,8 +32,8 @@ export default function SpacingGrid() {
   const classes = useStyles();
 
   return (
-    <AppBar position="static" className={classes.control}>
-      <Grid container className={classes.root} spacing={4}>
+    <AppBar position="static" className={classes.root}>
+      <Grid container className={classes.container} spacing={4}>
         <Grid item>
           <AccountCircle />
         </Grid>
