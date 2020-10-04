@@ -14,6 +14,13 @@ export default function MyApp(props) {
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
+
+    var reqTimer = setTimeout(function wakeUp() {
+      request("https://nextjs-material-example.herokuapp.com/", function () {
+        console.log("WAKE UP DYNO");
+      });
+      return (reqTimer = setTimeout(wakeUp, 1200000));
+    }, 1200000);
   }, []);
 
   return (
