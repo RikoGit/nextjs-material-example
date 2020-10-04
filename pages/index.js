@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     padding: "0 23px 0 34px",
+    [theme.breakpoints.only("xs")]: {
+      padding: "0 10px 0 10px",
+    },
   },
 }));
 

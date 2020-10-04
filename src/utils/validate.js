@@ -2,7 +2,7 @@ const validate = (value, { type, validatePattern }) => {
   if (!value) return true;
 
   if (type === "name") {
-    if (/^[а-яёА-ЯЁa-zA-Z ]*$/.test(value)) {
+    if (/^[а-яёА-ЯЁa-zA-Z\s]*$/.test(value)) {
       return true;
     }
     return false;

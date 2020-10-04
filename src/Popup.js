@@ -137,13 +137,28 @@ function ConfirmationDialogRaw(props) {
     setOpenTest(false);
   };
 
-  const handleOk = () => {
-    for (let key in data) {
-      localStorage.setItem(key, data[key]);
+  async function handleOk() {
+    const accountData = JSON.stringify(data);
+    localStorage.accountData = accountData;
+    try {
+      const response = await fetch(
+        "http://jsonplaceholder.typicode.com/posts",
+        {
+          method: "POST",
+          body: accountData,
+          headers: {
+            "Content-Type": "application/json",
+            "x-token-access": "random",
+          },
+        }
+      );
+      const result = await response.json();
+    } catch (error) {
+      console.error("Ошибка:", error);
     }
     onClose(value);
     setOpenTest(true);
-  };
+  }
 
   return (
     <Dialog

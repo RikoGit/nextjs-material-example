@@ -8,6 +8,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import Paper from "@material-ui/core/Paper";
 import PhoneIcon from "@material-ui/icons/Phone";
+import { Hidden } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +34,8 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "18px",
       lineHeight: "25px",
       color: "#313131",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
     },
   },
 }));

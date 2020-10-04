@@ -79,15 +79,15 @@ const Field = ({
 
 const IconField = (fieldName, size, classname) => {
   switch (fieldName) {
-    case "profileName": {
+    case "name": {
       return <AssignmentIndIcon fontSize={size} className={classname} />;
       break;
     }
-    case "profileEmail": {
+    case "email": {
       return <AlternateEmailIcon fontSize={size} className={classname} />;
       break;
     }
-    case "profilePhone": {
+    case "phone": {
       return <PhoneIcon fontSize={size} className={classname} />;
       break;
     }

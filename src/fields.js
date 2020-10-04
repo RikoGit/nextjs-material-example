@@ -1,6 +1,6 @@
 export default [
   {
-    name: "profileName",
+    name: "name",
     placeholder: "Укажите ваши фамилию и имя",
     label: "Фамилия и имя",
     helperText: "Вы неверно указали имя",
@@ -9,7 +9,7 @@ export default [
     },
   },
   {
-    name: "profileEmail",
+    name: "email",
     placeholder: "Ivanova@mail.ru",
     label: "E-mail",
     helperText: "Вы неверно указали e-mail",
@@ -18,7 +18,7 @@ export default [
     },
   },
   {
-    name: "profilePhone",
+    name: "phone",
     placeholder: "Укажите номер телефона",
     label: "Номер телефона",
     helperText: "В формате +71234567890",

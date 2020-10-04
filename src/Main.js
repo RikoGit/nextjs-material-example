@@ -41,9 +41,6 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "14px",
     },
   },
-  button: {
-    marginLeft: "auto",
-  },
 }));
 
 const Main = () => {
@@ -57,16 +54,25 @@ const Main = () => {
 
   return (
     <main className={classes.root}>
-      <Grid container className={classes.container} spacing={4}>
+      <Grid
+        container
+        className={classes.container}
+        spacing={4}
+        justify="space-between"
+      >
         <Grid item>
-          <AccountCircle />
+          <Grid container alignItems="center" spacing={3} wrap="nowrap">
+            <Grid item>
+              <AccountCircle fontSize="large" />
+            </Grid>
+            <Grid item className={classes.itemtitle}>
+              <Typography className={classes.title} variant="h6" noWrap>
+                Иванова Анна Михайловна
+              </Typography>
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item className={classes.itemtitle}>
-          <Typography className={classes.title} variant="h6" noWrap>
-            Иванова Анна Михайловна
-          </Typography>
-        </Grid>
-        <Grid item className={classes.button}>
+        <Grid item>
           <IconLabelButtons isEdit={isEdit} onClick={handleClick} />
         </Grid>
       </Grid>
