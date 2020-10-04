@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     border: "none",
     boxShadow: "none",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.only("xs")]: {
       margin: "0",
       bottom: "0",
       height: "426px",
@@ -48,21 +48,37 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   button: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: theme.palette.secondary.main,
     width: "212px",
     height: "49px",
     borderRadius: "36px",
     fontFamily: "Open Sans",
     fontStyle: "normal",
     fontWeight: "600",
-    fontSize: "14px",
+    fontSize: "12px",
     lineHeight: "19px",
     color: "#FFFFFF",
   },
+  buttonOk: {
+    backgroundColor: theme.palette.secondary.main,
+    fontFamily: "Open Sans",
+    fontStyle: "normal",
+    fontWeight: "600",
+    width: "202px",
+    height: "49px",
+    fontSize: "12px",
+    borderRadius: "41px",
+    boxSizing: "border-box",
+    color: "#FFFFFF",
+  },
   buttonCancel: {
+    fontFamily: "Open Sans",
+    fontStyle: "normal",
+    fontWeight: "600",
     width: "202px",
     height: "49px",
     borderRadius: "41px",
+    fontSize: "12px",
     border: "1px solid #00BFA5",
     boxSizing: "border-box",
     color: "#00BFA5",
@@ -80,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
 function ConfirmationDialogRaw(props) {
   const classes = useStyles();
 
-  const { onClose, value: valueProp, open, ...other } = props;
+  const { onClose, value: valueProp, open, data, ...other } = props;
   const [value, setValue] = useState(valueProp);
   const radioGroupRef = useRef(null);
 
@@ -101,6 +117,9 @@ function ConfirmationDialogRaw(props) {
   };
 
   const handleOk = () => {
+    for (let key in data) {
+      localStorage.setItem(key, data[key]);
+    }
     onClose(value);
   };
 
@@ -127,7 +146,7 @@ function ConfirmationDialogRaw(props) {
           <Grid item className={classes.item}>
             <Button
               autoFocus
-              className={classes.button}
+              className={classes.buttonOk}
               onClick={handleOk}
               variant="contained"
               disableElevation
@@ -163,7 +182,7 @@ ConfirmationDialogRaw.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-export default function ConfirmationDialog() {
+export default function ConfirmationDialog({ isDisabled, data }) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("test");
@@ -190,6 +209,8 @@ export default function ConfirmationDialog() {
         aria-controls="save"
         aria-label="save button"
         onClick={handleClickListItem}
+        type="submit"
+        disabled={isDisabled}
       >
         Сохранить изменения
       </Button>
@@ -202,6 +223,7 @@ export default function ConfirmationDialog() {
         open={open}
         onClose={handleClose}
         value={value}
+        data={data}
       />
     </div>
   );

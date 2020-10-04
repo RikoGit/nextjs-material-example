@@ -6,10 +6,11 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
 import Info from "./Info";
-import InfoEdit from "./InfoEdit";
+import Form from "./Form";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    margin: "0 0 40px 0",
     display: "flex",
     flexWrap: "wrap",
     flexDirection: "column",
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 0 24px 0",
     flexWrap: "nowrap",
     width: "100%",
-    padding: theme.spacing(2),
+    padding: "23px 0 23px 16px",
     background: theme.palette.background.main,
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)",
     borderRadius: "10px",
@@ -70,7 +71,7 @@ const Main = () => {
         </Grid>
       </Grid>
       {!isEdit && <Info />}
-      {isEdit && <InfoEdit />}
+      {isEdit && <Form />}
     </main>
   );
 };

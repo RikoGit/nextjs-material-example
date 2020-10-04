@@ -17,8 +17,14 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.palette.boxShadow,
     borderRadius: theme.palette.borderRadius,
   },
+  item: {
+    padding: "23px 16px 23px 45px",
+  },
   icon: {
-    color: theme.palette.primary.light,
+    color: theme.palette.secondary.light,
+  },
+  avatar: {
+    minWidth: "67px",
   },
   divider: {
     border: "1px solid #CAE7FE",
@@ -40,16 +46,16 @@ const Info = () => {
   return (
     <Paper className={classes.root}>
       <List>
-        <ListItem>
-          <ListItemAvatar>
-            <AlternateEmailIcon className={classes.icon} />
+        <ListItem className={classes.item}>
+          <ListItemAvatar className={classes.avatar}>
+            <AlternateEmailIcon className={classes.icon} fontSize="large" />
           </ListItemAvatar>
           <ListItemText primary="Ivanova@mail.ru" className={classes.text} />
         </ListItem>
         <Divider className={classes.divider} />
-        <ListItem>
+        <ListItem className={classes.item}>
           <ListItemAvatar>
-            <PhoneIcon className={classes.icon} />
+            <PhoneIcon className={classes.icon} fontSize="large" />
           </ListItemAvatar>
           <ListItemText
             primary="Укажите номер телефона"
