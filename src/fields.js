@@ -6,7 +6,6 @@ export default [
     helperText: "Вы неверно указали имя",
     validateOptions: {
       type: "name",
-      validatePattern: "/^[а-яёА-ЯЁa-zA-Z]*$/",
     },
   },
   {
@@ -14,7 +13,9 @@ export default [
     placeholder: "Ivanova@mail.ru",
     label: "E-mail",
     helperText: "Вы неверно указали e-mail",
-    validateOptions: { type: "mail", validatePattern: "^\\+7\\d{10}$" },
+    validateOptions: {
+      type: "mail",
+    },
   },
   {
     name: "profilePhone",

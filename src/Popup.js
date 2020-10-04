@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -9,19 +9,20 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 
+import SimpleDialog from "./SimpleDialog";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     backgroundColor: theme.palette.background.paper,
     textAlign: "center",
   },
-  dialog: {},
   paper: {
-    padding: "0 0 20px 0",
     position: "absolute",
     top: "220px",
     width: "600px",
     maxWidth: "600px",
+    height: "318px",
     maxHeight: 435,
     borderRadius: theme.palette.borderRadius,
     textAlign: "center",
@@ -36,9 +37,29 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: "20px 20px 0 0",
     },
   },
+  paperTest: {
+    position: "absolute",
+    top: "220px",
+    width: "600px",
+    maxWidth: "600px",
+    height: "318px",
+    maxHeight: 435,
+    borderRadius: theme.palette.borderRadius,
+    textAlign: "center",
+    border: "none",
+    boxShadow: "none",
+    [theme.breakpoints.only("xs")]: {
+      margin: "0",
+      bottom: "0",
+      height: "83px",
+      top: "auto",
+      width: "100%",
+      borderRadius: "20px 20px 0 0",
+    },
+  },
   title: {
     "& > * ": {
-      padding: "69px 20px 20px 20px",
+      padding: "60px 20px 20px 20px",
       fontFamily: "Open Sans",
       fontStyle: "normal",
       fontWeight: "600",
@@ -95,25 +116,25 @@ const useStyles = makeStyles((theme) => ({
 
 function ConfirmationDialogRaw(props) {
   const classes = useStyles();
-
   const { onClose, value: valueProp, open, data, ...other } = props;
-  const [value, setValue] = useState(valueProp);
-  const radioGroupRef = useRef(null);
 
-  React.useEffect(() => {
+  const [value, setValue] = useState(valueProp);
+
+  const [openTest, setOpenTest] = useState(false);
+
+  const handleEntering = () => {};
+
+  useEffect(() => {
     if (!open) {
       setValue(valueProp);
     }
   }, [valueProp, open]);
 
-  const handleEntering = () => {
-    if (radioGroupRef.current != null) {
-      radioGroupRef.current.focus();
-    }
-  };
-
   const handleCancel = () => {
     onClose();
+  };
+  const handleClose = () => {
+    setOpenTest(false);
   };
 
   const handleOk = () => {
@@ -121,15 +142,11 @@ function ConfirmationDialogRaw(props) {
       localStorage.setItem(key, data[key]);
     }
     onClose(value);
-  };
-
-  const handleChange = (event) => {
-    setValue(event.target.value);
+    setOpenTest(true);
   };
 
   return (
     <Dialog
-      className={classes.dialog}
       disableBackdropClick
       disableEscapeKeyDown
       maxWidth="xs"
@@ -153,6 +170,13 @@ function ConfirmationDialogRaw(props) {
             >
               Сохранить
             </Button>
+            <SimpleDialog
+              open={openTest}
+              onClose={handleClose}
+              classes={{
+                paper: classes.paperTest,
+              }}
+            />
           </Grid>
           <Grid item className={classes.item}>
             <Button

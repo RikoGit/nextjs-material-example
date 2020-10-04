@@ -37,7 +37,10 @@ const Form = () => {
   let isValid = false;
 
   if (isSubmitted || isBlured) {
-    isValid = Object.values(validation).every(Boolean);
+    if (!Object.values(form).every((field) => field === "")) {
+      //not required field
+      isValid = Object.values(validation).every(Boolean);
+    }
   }
 
   const validateForm = () => {
@@ -55,7 +58,6 @@ const Form = () => {
     event.preventDefault();
     setIsSubmitted(true);
     validateForm();
-    console.log("dd");
   };
 
   const onBlur = () => {
