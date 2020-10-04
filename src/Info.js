@@ -23,9 +23,6 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     color: theme.palette.secondary.light,
   },
-  avatar: {
-    minWidth: "67px",
-  },
   divider: {
     border: "1px solid #CAE7FE",
   },
@@ -47,7 +44,7 @@ const Info = () => {
     <Paper className={classes.root}>
       <List>
         <ListItem className={classes.item}>
-          <ListItemAvatar className={classes.avatar}>
+          <ListItemAvatar>
             <AlternateEmailIcon className={classes.icon} fontSize="large" />
           </ListItemAvatar>
           <ListItemText primary="Ivanova@mail.ru" className={classes.text} />
