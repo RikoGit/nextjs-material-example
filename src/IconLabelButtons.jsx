@@ -9,12 +9,15 @@ import withWidth from "@material-ui/core/withWidth";
 const useStyles = makeStyles((theme) => ({
   root: {},
   button: {
-    fontFamily: "Open Sans",
-    fontSize: "14px",
     fontWeight: "600",
     lineHeight: "19px",
     margin: theme.spacing(1),
     color: "#fff",
+    [theme.breakpoints.only("xs")]: {
+      padding: 0,
+      margin: 0,
+      minWidth: 0,
+    },
   },
 }));
 

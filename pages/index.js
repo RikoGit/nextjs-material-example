@@ -8,12 +8,21 @@ import Main from "../src/Main.js";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: "auto",
-    padding: "0",
+    position: "relative",
     minWidth: "365px",
     maxWidth: "1365px",
-    background: "linear-gradient(270deg, #2196F3 0%, #1EC3AF 101.06%)",
     minHeight: "100vh",
+    overflow: "hidden",
+  },
+  root__bg: {
+    position: "absolute",
+    top: 0,
+    height: "470px",
+    backgroundImage: `url(${"images/Rectangle.png"})`,
+    zIndex: -1,
+    [theme.breakpoints.only("xs")]: {
+      height: "199px",
+    },
   },
   container: {
     padding: "0 23px 0 34px",
@@ -27,7 +36,8 @@ export default function Index() {
   const classes = useStyles();
 
   return (
-    <Container className={classes.root}>
+    <Container className={classes.root} disableGutters>
+      <Grid container className={classes.root__bg} />
       <Grid
         container
         direction="column"

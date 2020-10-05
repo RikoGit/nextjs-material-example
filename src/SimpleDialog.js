@@ -6,14 +6,11 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
-import { Assessment } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   title: {
     "& > * ": {
       padding: "60px 20px 20px 20px",
-      fontFamily: "Open Sans",
-      fontStyle: "normal",
       fontWeight: "600",
       fontSize: "24px",
       lineHeight: "33px",
@@ -25,8 +22,6 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     backgroundColor: theme.palette.secondary.main,
-    fontFamily: "Open Sans",
-    fontStyle: "normal",
     fontWeight: "600",
     width: "202px",
     height: "49px",

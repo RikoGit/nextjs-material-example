@@ -35,8 +35,6 @@ const useStyles = makeStyles((theme) => ({
     width: "212px",
     height: "49px",
     borderRadius: "36px",
-    fontFamily: "Open Sans",
-    fontStyle: "normal",
     fontWeight: "600",
     fontSize: "12px",
     lineHeight: "19px",

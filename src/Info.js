@@ -20,17 +20,21 @@ const useStyles = makeStyles((theme) => ({
   },
   item: {
     padding: "23px 16px 23px 45px",
+    [theme.breakpoints.only("xs")]: {
+      padding: "12px 22px 22px",
+    },
   },
   icon: {
     color: theme.palette.secondary.light,
+    [theme.breakpoints.only("xs")]: {
+      fontSize: "20px",
+    },
   },
   divider: {
     border: "1px solid #CAE7FE",
   },
   text: {
     "& > span": {
-      fontFamily: "Open Sans",
-      fontWeight: "normal",
       fontSize: "18px",
       lineHeight: "25px",
       color: "#313131",

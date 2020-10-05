@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+import Avatar from "@material-ui/core/Avatar";
 import IconLabelButtons from "./IconLabelButtons";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
@@ -20,26 +20,41 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 0 24px 0",
     flexWrap: "nowrap",
     width: "100%",
-    padding: "23px 0 23px 16px",
+    padding: theme.spacing(1),
     background: theme.palette.background.main,
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)",
     borderRadius: "10px",
     color: "#fff",
+    [theme.breakpoints.only("xs")]: {
+      margin: "0 0 10px 0",
+    },
   },
   itemtitle: {
     textOverflow: "ellipsis",
     overflow: "hidden",
     whiteSpace: "nowrap",
   },
+  account: {
+    overflow: "hidden",
+  },
   title: {
-    fontFamily: "Open Sans",
-    fontStyle: "normal",
     fontWeight: "600",
     fontSize: "30px",
     lineHeight: "41px",
     [theme.breakpoints.only("xs")]: {
       fontSize: "14px",
     },
+    textOverflow: "ellipses",
+  },
+  icon: {
+    fontSize: "80px",
+    [theme.breakpoints.only("xs")]: {
+      fontSize: "40px",
+    },
+  },
+  large: {
+    width: theme.spacing(7),
+    height: theme.spacing(7),
   },
 }));
 
@@ -59,11 +74,16 @@ const Main = () => {
         className={classes.container}
         spacing={4}
         justify="space-between"
+        alignItems="center"
       >
-        <Grid item>
+        <Grid item className={classes.account}>
           <Grid container alignItems="center" spacing={3} wrap="nowrap">
             <Grid item>
-              <AccountCircle fontSize="large" />
+              <Avatar
+                alt="avatar-icon"
+                src="/static/images/icon.png"
+                className={classes.large}
+              />
             </Grid>
             <Grid item className={classes.itemtitle}>
               <Typography className={classes.title} variant="h6" noWrap>

@@ -35,8 +35,6 @@ const useStyles = makeStyles((theme) => ({
   title: {
     "& > * ": {
       padding: "60px 20px 20px 20px",
-      fontFamily: "Open Sans",
-      fontStyle: "normal",
       fontWeight: "600",
       fontSize: "24px",
       lineHeight: "33px",
@@ -45,8 +43,6 @@ const useStyles = makeStyles((theme) => ({
   },
   buttonOk: {
     backgroundColor: theme.palette.secondary.main,
-    fontFamily: "Open Sans",
-    fontStyle: "normal",
     fontWeight: "600",
     width: "202px",
     height: "49px",
@@ -56,8 +52,6 @@ const useStyles = makeStyles((theme) => ({
     color: "#FFFFFF",
   },
   buttonCancel: {
-    fontFamily: "Open Sans",
-    fontStyle: "normal",
     fontWeight: "600",
     width: "202px",
     height: "49px",
