@@ -4,10 +4,10 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import withWidth from "@material-ui/core/withWidth";
 
-import fields from "./fields";
-import Popup from "./Popup";
-import validate from "./utils/validate";
+import ConfirmationDialog from "./ConfirmationDialog";
 import Field from "./Field";
+import fields from "./fields";
+import validate from "./utils/validate";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -94,7 +94,7 @@ const Form = () => {
             );
           })}
         </Grid>
-        <Popup isDisabled={!isValid} data={form} />
+        <ConfirmationDialog isDisabled={!isValid} data={form} />
       </Paper>
     </form>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
@@ -12,32 +12,7 @@ import IconButton from "@material-ui/core/IconButton";
 import SimpleDialog from "./SimpleDialog";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    backgroundColor: theme.palette.background.paper,
-    textAlign: "center",
-  },
   paper: {
-    position: "absolute",
-    top: "220px",
-    width: "600px",
-    maxWidth: "600px",
-    height: "318px",
-    maxHeight: 435,
-    borderRadius: theme.palette.borderRadius,
-    textAlign: "center",
-    border: "none",
-    boxShadow: "none",
-    [theme.breakpoints.only("xs")]: {
-      margin: "0",
-      bottom: "0",
-      height: "426px",
-      top: "auto",
-      width: "100%",
-      borderRadius: "20px 20px 0 0",
-    },
-  },
-  paperTest: {
     position: "absolute",
     top: "220px",
     width: "600px",
@@ -67,18 +42,6 @@ const useStyles = makeStyles((theme) => ({
       lineHeight: "33px",
       color: "rgba(49, 49, 49, 0.7)",
     },
-  },
-  button: {
-    backgroundColor: theme.palette.secondary.main,
-    width: "212px",
-    height: "49px",
-    borderRadius: "36px",
-    fontFamily: "Open Sans",
-    fontStyle: "normal",
-    fontWeight: "600",
-    fontSize: "12px",
-    lineHeight: "19px",
-    color: "#FFFFFF",
   },
   buttonOk: {
     backgroundColor: theme.palette.secondary.main,
@@ -117,12 +80,8 @@ const useStyles = makeStyles((theme) => ({
 function ConfirmationDialogRaw(props) {
   const classes = useStyles();
   const { onClose, value: valueProp, open, data, ...other } = props;
-
   const [value, setValue] = useState(valueProp);
-
   const [openTest, setOpenTest] = useState(false);
-
-  const handleEntering = () => {};
 
   useEffect(() => {
     if (!open) {
@@ -142,7 +101,7 @@ function ConfirmationDialogRaw(props) {
     localStorage.accountData = accountData;
     try {
       const response = await fetch(
-        "http://jsonplaceholder.typicode.com/posts",
+        "https://jsonplaceholder.typicode.com/posts",
         {
           method: "POST",
           body: accountData,
@@ -165,7 +124,6 @@ function ConfirmationDialogRaw(props) {
       disableBackdropClick
       disableEscapeKeyDown
       maxWidth="xs"
-      onEntering={handleEntering}
       aria-labelledby="confirmation-dialog-title"
       open={open}
       {...other}
@@ -189,7 +147,7 @@ function ConfirmationDialogRaw(props) {
               open={openTest}
               onClose={handleClose}
               classes={{
-                paper: classes.paperTest,
+                paper: classes.paper,
               }}
             />
           </Grid>
@@ -221,49 +179,4 @@ ConfirmationDialogRaw.propTypes = {
   value: PropTypes.string.isRequired,
 };
 
-export default function ConfirmationDialog({ isDisabled, data }) {
-  const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("test");
-
-  const handleClickListItem = () => {
-    setOpen(true);
-  };
-
-  const handleClose = (newValue) => {
-    setOpen(false);
-
-    if (newValue) {
-      setValue(newValue);
-    }
-  };
-
-  return (
-    <div className={classes.root}>
-      <Button
-        className={classes.button}
-        variant="contained"
-        disableElevation
-        aria-haspopup="true"
-        aria-controls="save"
-        aria-label="save button"
-        onClick={handleClickListItem}
-        type="submit"
-        disabled={isDisabled}
-      >
-        Сохранить изменения
-      </Button>
-      <ConfirmationDialogRaw
-        classes={{
-          paper: classes.paper,
-        }}
-        id="save"
-        keepMounted
-        open={open}
-        onClose={handleClose}
-        value={value}
-        data={data}
-      />
-    </div>
-  );
-}
+export default ConfirmationDialogRaw;
