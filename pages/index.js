@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: 0,
     height: "470px",
-    backgroundImage: `url(${"images/Rectangle.png"})`,
+    backgroundImage: `url(${"/static/images/Rectangle.png"})`,
     zIndex: -1,
     [theme.breakpoints.only("xs")]: {
       height: "199px",
