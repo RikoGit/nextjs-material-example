@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     margin: "0 0 29px 0",
     padding: "0",
+    [theme.breakpoints.only("xs")]: {
+      margin: theme.spacing(0, 0, 1, 0),
+    },
   },
   title: {
     color: "#fff",
@@ -31,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "600",
     fontSize: "18px",
     lineHeight: "25px",
+    [theme.breakpoints.only("xs")]: {
+      padding: "56px 20px 8px 0",
+    },
   },
   breadcrumb: {
     color: "#fff",
@@ -55,15 +61,18 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(0, 1),
     [theme.breakpoints.only("xs")]: {
       margin: theme.spacing(0),
+      "& svg": {
+        fontSize: "24px",
+      },
     },
   },
   accountIconButton: {
-    "& .MuiButton-startIcon svg": {
-      margin: theme.spacing(0, 1),
-      fontSize: "40px",
-      color: "#fff",
-      [theme.breakpoints.only("xs")]: {
-        margin: theme.spacing(0),
+    margin: theme.spacing(0, 1),
+    [theme.breakpoints.only("xs")]: {
+      margin: theme.spacing(0),
+      minWidth: "auto",
+      "& .MuiButton-iconSizeMedium": {
+        margin: 0,
       },
     },
   },
@@ -80,6 +89,7 @@ const useStyles = makeStyles((theme) => ({
     width: "253px",
     height: "39px",
     [theme.breakpoints.only("xs")]: {
+      marginTop: "17px",
       width: "auto",
     },
   },
@@ -91,8 +101,12 @@ const useStyles = makeStyles((theme) => ({
     textTransform: "none",
   },
   small: {
-    width: theme.spacing(3),
-    height: theme.spacing(3),
+    width: theme.spacing(5),
+    height: theme.spacing(5),
+    [theme.breakpoints.only("xs")]: {
+      width: theme.spacing(3),
+      height: theme.spacing(3),
+    },
   },
 }));
 

@@ -17,11 +17,12 @@ const useStyles = makeStyles((theme) => ({
   root__bg: {
     position: "absolute",
     top: 0,
-    height: "470px",
+    height: "100%",
     backgroundImage: `url(${"/static/images/Rectangle.png"})`,
     zIndex: -1,
     [theme.breakpoints.only("xs")]: {
-      height: "199px",
+      backgroundSize: "100% 199px",
+      backgroundRepeat: "no-repeat",
     },
   },
   container: {

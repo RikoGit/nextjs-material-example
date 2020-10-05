@@ -46,15 +46,13 @@ const useStyles = makeStyles((theme) => ({
     },
     textOverflow: "ellipses",
   },
-  icon: {
-    fontSize: "80px",
-    [theme.breakpoints.only("xs")]: {
-      fontSize: "40px",
-    },
-  },
   large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
+    width: theme.spacing(10),
+    height: theme.spacing(10),
+    [theme.breakpoints.only("xs")]: {
+      width: theme.spacing(5),
+      height: theme.spacing(5),
+    },
   },
 }));
 
