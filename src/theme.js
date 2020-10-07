@@ -28,6 +28,13 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: "Open Sans",
+    button: {
+      color: "#fff",
+      textTransform: "none",
+      fontSize: "14px",
+      lineHeight: "19px",
+      fontWeight: "600",
+    },
   },
 });
 
@@ -41,16 +48,17 @@ theme.typography.h2 = {
   },
 };
 
-theme.typography.h3 = {
-  fontSize: "24px",
-  lineHeight: "33px",
-  fontWeight: "600",
-  color: "rgba(49, 49, 49, 0.7)",
-  [theme.breakpoints.only("xs")]: {
-    fontSize: "18px",
-    lineHeight: "25px",
-  },
-};
+theme.typography.h3,
+  (theme.typography.caption = {
+    fontSize: "24px",
+    lineHeight: "33px",
+    fontWeight: "600",
+    color: "rgba(49, 49, 49, 0.7)",
+    [theme.breakpoints.only("xs")]: {
+      fontSize: "18px",
+      lineHeight: "25px",
+    },
+  });
 theme.typography.h4 = {
   fontSize: "18px",
   lineHeight: "25px",
@@ -59,14 +67,6 @@ theme.typography.h4 = {
     fontSize: "14px",
     lineHeight: "19px",
   },
-};
-
-theme.typography.button = {
-  textTransform: "none",
-  fontSize: "14px",
-  lineHeight: "19px",
-  fontWeight: "600",
-  color: "#fff",
 };
 
 export default theme;

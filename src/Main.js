@@ -12,6 +12,9 @@ import { Autorenew } from "@material-ui/icons";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "0 0 40px 0",
+    [theme.breakpoints.only("xs")]: {
+      margin: "0 0 10px 0",
+    },
     display: "flex",
     flexWrap: "wrap",
     flexDirection: "column",

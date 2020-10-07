@@ -6,6 +6,7 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Grid from "@material-ui/core/Grid";
 import Hidden from "@material-ui/core/Hidden";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -17,10 +18,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   button: {
+    height: "50px",
+    borderRadius: "41px",
+    color: "#fff",
     backgroundColor: theme.palette.secondary.main,
     width: "202px",
-    height: "49px",
-    borderRadius: "41px",
     boxSizing: "border-box",
   },
 }));
@@ -45,12 +47,10 @@ const SimpleDialog = (props) => {
       open={open}
       {...other}
     >
-      <DialogTitle
-        id="simple-dialog-title"
-        variant="h3"
-        className={classes.title}
-      >
-        Данные успешно сохранены
+      <DialogTitle id="simple-dialog-title" className={classes.title}>
+        <Typography variant="caption" noWrap>
+          Данные успешно сохранены
+        </Typography>
       </DialogTitle>
       <Hidden only="xs">
         <Grid container justify="center">

@@ -8,6 +8,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
 
 import SimpleDialog from "./SimpleDialog";
 
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
       top: "auto",
       width: "100%",
       borderRadius: "20px 20px 0 0",
+      "& .MuiDialogTitle-root": { padding: 0 },
     },
   },
   title: {
@@ -39,21 +41,18 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   buttonOk: {
-    backgroundColor: theme.palette.secondary.main,
-    fontWeight: "600",
-    width: "202px",
-    height: "49px",
-    fontSize: "12px",
+    height: "50px",
     borderRadius: "41px",
+    color: "#fff",
+    backgroundColor: theme.palette.secondary.main,
+    width: "202px",
     boxSizing: "border-box",
-    color: "#FFFFFF",
   },
   buttonCancel: {
     fontWeight: "600",
     width: "202px",
-    height: "49px",
+    height: "50px",
     borderRadius: "41px",
-    fontSize: "12px",
     border: "1px solid #00BFA5",
     boxSizing: "border-box",
     color: "#00BFA5",
@@ -119,12 +118,10 @@ function ConfirmationDialogRaw(props) {
       open={open}
       {...other}
     >
-      <DialogTitle
-        id="confirmation-dialog-title"
-        variant="h3"
-        className={classes.title}
-      >
-        Сохранить изменения?
+      <DialogTitle id="confirmation-dialog-title" className={classes.title}>
+        <Typography variant="caption" noWrap>
+          Сохранить изменения?
+        </Typography>
       </DialogTitle>
       <DialogActions>
         <Grid container direction="column">
