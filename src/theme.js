@@ -31,4 +31,42 @@ const theme = createMuiTheme({
   },
 });
 
+theme.typography.h2 = {
+  fontSize: "30px",
+  fontWeight: "600",
+  lineHeight: "41px",
+  [theme.breakpoints.only("xs")]: {
+    fontSize: "14px",
+    lineHeight: "19px",
+  },
+};
+
+theme.typography.h3 = {
+  fontSize: "24px",
+  lineHeight: "33px",
+  fontWeight: "600",
+  color: "rgba(49, 49, 49, 0.7)",
+  [theme.breakpoints.only("xs")]: {
+    fontSize: "18px",
+    lineHeight: "25px",
+  },
+};
+theme.typography.h4 = {
+  fontSize: "18px",
+  lineHeight: "25px",
+  fontWeight: "600",
+  [theme.breakpoints.only("xs")]: {
+    fontSize: "14px",
+    lineHeight: "19px",
+  },
+};
+
+theme.typography.button = {
+  textTransform: "none",
+  fontSize: "14px",
+  lineHeight: "19px",
+  fontWeight: "600",
+  color: "#fff",
+};
+
 export default theme;

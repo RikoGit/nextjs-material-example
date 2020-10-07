@@ -35,9 +35,6 @@ const useStyles = makeStyles((theme) => ({
   title: {
     "& > * ": {
       padding: "60px 20px 20px 20px",
-      fontWeight: "600",
-      fontSize: "24px",
-      lineHeight: "33px",
       color: "rgba(49, 49, 49, 0.7)",
     },
   },
@@ -122,7 +119,11 @@ function ConfirmationDialogRaw(props) {
       open={open}
       {...other}
     >
-      <DialogTitle id="confirmation-dialog-title" className={classes.title}>
+      <DialogTitle
+        id="confirmation-dialog-title"
+        variant="h3"
+        className={classes.title}
+      >
         Сохранить изменения?
       </DialogTitle>
       <DialogActions>

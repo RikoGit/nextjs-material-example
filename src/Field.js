@@ -11,9 +11,11 @@ import withWidth from "@material-ui/core/withWidth";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
+    margin: "5px 18px 0 0",
     color: theme.palette.secondary.light,
   },
   item: {
+    flexGrow: 1,
     [theme.breakpoints.only("xs")]: {
       margin: "0 0 39px 0",
       flexGrow: "1",
@@ -26,7 +28,25 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   divider: {
+    margin: "0 32px 0 77px",
     backgroundColor: "#CAE7FE",
+  },
+  field: {
+    padding: "23px 0",
+    width: "auto",
+    flexGrow: 1,
+    flexBasis: "auto",
+    [theme.breakpoints.only("xs")]: {
+      padding: 0,
+    },
+  },
+  textField: {
+    width: "100%",
+    "& .MuiFormHelperText-root": {
+      position: "absolute",
+      bottom: "-24px",
+      fontSize: "12px",
+    },
   },
 }));
 
@@ -35,15 +55,15 @@ const Field = ({
   value,
   onBlur,
   onChange,
-  isLast,
   error,
   helperText,
+  isLast,
 }) => {
   const classes = useStyles();
 
   return (
     <>
-      <Grid item xs={12} sm={3}>
+      <Grid item xs={12} className={classes.field}>
         <Grid container alignItems="center" spacing={3} wrap="nowrap">
           <Hidden only="xs">
             <Grid item>{IconField(field.name, "large", classes.icon)}</Grid>
@@ -60,6 +80,7 @@ const Field = ({
               onBlur={onBlur}
               error={error}
               helperText={helperText}
+              className={classes.textField}
             />
           </Grid>
         </Grid>

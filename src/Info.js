@@ -19,9 +19,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: theme.palette.borderRadius,
   },
   item: {
-    padding: "23px 16px 23px 45px",
+    padding: "23px 16px 23px 74px",
     [theme.breakpoints.only("xs")]: {
-      padding: "12px 22px 22px",
+      padding: "13px 22px 14px 10px",
     },
   },
   icon: {
@@ -40,6 +40,16 @@ const useStyles = makeStyles((theme) => ({
       color: "#313131",
       overflow: "hidden",
       textOverflow: "ellipsis",
+      [theme.breakpoints.only("xs")]: {
+        fontSize: "14px",
+        lineHeight: "19px",
+      },
+    },
+  },
+  avatar: {
+    minWidth: "76px",
+    [theme.breakpoints.only("xs")]: {
+      minWidth: "31px",
     },
   },
 }));
@@ -51,14 +61,18 @@ const Info = () => {
     <Paper className={classes.root}>
       <List>
         <ListItem className={classes.item}>
-          <ListItemAvatar>
+          <ListItemAvatar className={classes.avatar}>
             <AlternateEmailIcon className={classes.icon} fontSize="large" />
           </ListItemAvatar>
-          <ListItemText primary="Ivanova@mail.ru" className={classes.text} />
+          <ListItemText
+            primary="Ivanova@mail.ru"
+            variant="h4"
+            className={classes.text}
+          />
         </ListItem>
         <Divider className={classes.divider} />
         <ListItem className={classes.item}>
-          <ListItemAvatar>
+          <ListItemAvatar className={classes.avatar}>
             <PhoneIcon className={classes.icon} fontSize="large" />
           </ListItemAvatar>
           <ListItemText

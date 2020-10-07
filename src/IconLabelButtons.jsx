@@ -7,7 +7,12 @@ import Hidden from "@material-ui/core/Hidden";
 import withWidth from "@material-ui/core/withWidth";
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    marginRight: "-3px",
+    [theme.breakpoints.only("xs")]: {
+      marginRight: "17px",
+    },
+  },
   button: {
     fontWeight: "600",
     lineHeight: "19px",

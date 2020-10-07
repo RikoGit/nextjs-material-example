@@ -19,7 +19,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: theme.palette.borderRadius,
   },
   container: {
-    padding: "26px 34px 29px 34px",
+    padding: "26px 70px 24px 30px",
+    [theme.breakpoints.only("xs")]: {
+      padding: "26px 23px 0",
+    },
   },
 }));
 
@@ -70,7 +73,6 @@ const Form = () => {
       <Paper className={classes.paper}>
         <Grid
           container
-          spacing={1}
           direction="row"
           alignItems="center"
           justify="space-between"
@@ -87,8 +89,8 @@ const Form = () => {
                 onChange={(event) => {
                   setForm({ ...form, [field.name]: event.target.value });
                 }}
-                error={!validation[field.name]}
                 isLast={isLast}
+                error={!validation[field.name]}
                 helperText={!validation[field.name] && field.helperText}
               />
             );

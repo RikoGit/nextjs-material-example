@@ -25,35 +25,29 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 0 29px 0",
     padding: "0",
     [theme.breakpoints.only("xs")]: {
-      margin: theme.spacing(0, 0, 1, 0),
+      margin: "0 0 5px 0",
     },
   },
   title: {
     color: "#fff",
     padding: "77px 20px 8px 0",
-    fontWeight: "600",
-    fontSize: "18px",
-    lineHeight: "25px",
     [theme.breakpoints.only("xs")]: {
-      padding: "56px 20px 8px 0",
+      padding: "60px 20px 5px 0",
     },
   },
   breadcrumb: {
     color: "#fff",
-    fontWeight: "normal",
-    fontSize: "14px",
-    lineHeight: "19px",
-    "& a": {
+    "& .MuiTypography-root": {
       color: "#fff",
       fontWeight: "normal",
       fontSize: "14px",
       lineHeight: "19px",
     },
-    "& p": {
-      color: "#fff",
-      fontWeight: "normal",
-      fontSize: "14px",
-      lineHeight: "19px",
+    [theme.breakpoints.only("xs")]: {
+      "& .MuiTypography-root": {
+        fontSize: "12px",
+        lineHeight: "16px",
+      },
     },
   },
   icon: {
@@ -68,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
   },
   accountIconButton: {
     margin: theme.spacing(0, 1),
+    marginLeft: "14px",
     [theme.breakpoints.only("xs")]: {
       margin: theme.spacing(0),
       minWidth: "auto",
@@ -83,17 +78,20 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
   },
   buttons: {
-    marginTop: "21px",
+    marginTop: "20px",
     display: "flex",
     flexDirection: "row",
-    width: "253px",
+    width: "261px",
     height: "39px",
     [theme.breakpoints.only("xs")]: {
       marginTop: "17px",
+      marginRight: "-6px",
       width: "auto",
+      height: "24px",
     },
   },
   buttontext: {
+    paddingLeft: "12px",
     fontWeight: "600",
     fontSize: "14px",
     lineHeight: "19px",
@@ -122,7 +120,7 @@ const Header = () => {
       <Toolbar className={classes.toolbar}>
         <Grid container justify="space-between">
           <Grid item>
-            <Typography className={classes.title} variant="h6">
+            <Typography className={classes.title} variant="h4">
               ЛИЧНЫЙ ПРОФИЛЬ
             </Typography>
             <Breadcrumbs aria-label="breadcrumb" className={classes.breadcrumb}>

@@ -6,6 +6,7 @@ import ConfirmationDialogRaw from "./ConfirmationDialogRaw";
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    marginTop: "-11px",
     width: "100%",
     backgroundColor: theme.palette.background.paper,
     textAlign: "center",
@@ -35,9 +36,6 @@ const useStyles = makeStyles((theme) => ({
     width: "212px",
     height: "49px",
     borderRadius: "36px",
-    fontWeight: "600",
-    fontSize: "12px",
-    lineHeight: "19px",
     color: "#FFFFFF",
   },
 }));

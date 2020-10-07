@@ -9,7 +9,6 @@ import Main from "../src/Main.js";
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "relative",
-    minWidth: "365px",
     maxWidth: "1365px",
     minHeight: "100vh",
     overflow: "hidden",

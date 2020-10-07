@@ -11,24 +11,17 @@ const useStyles = makeStyles((theme) => ({
   title: {
     "& > * ": {
       padding: "60px 20px 20px 20px",
-      fontWeight: "600",
-      fontSize: "24px",
-      lineHeight: "33px",
-      color: "rgba(49, 49, 49, 0.7)",
       [theme.breakpoints.only("xs")]: {
-        padding: 0,
+        padding: "26px 0 0 0",
       },
     },
   },
   button: {
     backgroundColor: theme.palette.secondary.main,
-    fontWeight: "600",
     width: "202px",
     height: "49px",
-    fontSize: "12px",
     borderRadius: "41px",
     boxSizing: "border-box",
-    color: "#FFFFFF",
   },
 }));
 
@@ -52,7 +45,11 @@ const SimpleDialog = (props) => {
       open={open}
       {...other}
     >
-      <DialogTitle id="simple-dialog-title" className={classes.title}>
+      <DialogTitle
+        id="simple-dialog-title"
+        variant="h3"
+        className={classes.title}
+      >
         Данные успешно сохранены
       </DialogTitle>
       <Hidden only="xs">
