@@ -46,6 +46,8 @@ const useStyles = makeStyles((theme) => ({
       position: "absolute",
       bottom: "-24px",
       fontSize: "12px",
+      lineHeight: "16px",
+      fontWeight: "normal",
     },
   },
 }));

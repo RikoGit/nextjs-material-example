@@ -18,10 +18,11 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.palette.boxShadow,
     borderRadius: theme.palette.borderRadius,
   },
+  list: { padding: 0 },
   item: {
-    padding: "23px 16px 23px 74px",
+    padding: "29px 16px 25px 74px",
     [theme.breakpoints.only("xs")]: {
-      padding: "13px 22px 14px 10px",
+      padding: "20px 22px 16px 10px",
     },
   },
   icon: {
@@ -59,7 +60,7 @@ const Info = () => {
 
   return (
     <Paper className={classes.root}>
-      <List>
+      <List className={classes.list}>
         <ListItem className={classes.item}>
           <ListItemAvatar className={classes.avatar}>
             <AlternateEmailIcon className={classes.icon} fontSize="large" />
