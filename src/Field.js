@@ -74,7 +74,9 @@ const Field = ({
             <TextField
               className={classes.textfield}
               name={field.name}
-              label={field.label}
+              label={`${field.label} ${
+                field.validateOptions.isRequired ? "*" : ""
+              }`}
               placeholder={field.placeholder}
               variant="outlined"
               value={value}

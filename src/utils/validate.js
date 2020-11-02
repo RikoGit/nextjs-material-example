@@ -29,4 +29,14 @@ const validate = (value, { type, validatePattern }) => {
   return true;
 };
 
-export default validate;
+export default (value, options) => {
+  if (value) {
+    // если поле заполнено
+    return validate(value, options); // запускаем валидацию
+  }
+  if (options.isRequired) {
+    // если не заполнено и обязательное
+    return false;
+  }
+  return true;
+};

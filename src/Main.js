@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import IconLabelButtons from "./IconLabelButtons";
@@ -7,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 
 import Info from "./Info";
 import Form from "./Form";
-import { Autorenew } from "@material-ui/icons";
+import { handleOk } from "./actions.js";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Main = () => {
+const Main = ({ name, email, phone, dispatchHandleOk }) => {
   const classes = useStyles();
 
   const [isEdit, setIsEdit] = useState(false);
@@ -103,7 +104,7 @@ const Main = () => {
             </Grid>
             <Grid item className={classes.itemtitle}>
               <Typography className={classes.title} variant="h2" noWrap>
-                Иванова Анна Михайловна
+                {name}
               </Typography>
             </Grid>
           </Grid>
@@ -112,10 +113,19 @@ const Main = () => {
           <IconLabelButtons isEdit={isEdit} onClick={handleClick} />
         </Grid>
       </Grid>
-      {!isEdit && <Info />}
-      {isEdit && <Form />}
+      {!isEdit && <Info email={email} phone={phone} />}
+      {isEdit && (
+        <Form
+          dispatchHandleOk={dispatchHandleOk}
+          store={{ name, email, phone }}
+        />
+      )}
     </main>
   );
 };
 
-export default Main;
+const mapStateToProps = (state) => state;
+
+export default connect(mapStateToProps, {
+  dispatchHandleOk: handleOk,
+})(Main);

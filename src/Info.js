@@ -8,7 +8,8 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
 import Paper from "@material-ui/core/Paper";
 import PhoneIcon from "@material-ui/icons/Phone";
-import { Hidden } from "@material-ui/core";
+
+import fields from "./fields.js";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -55,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Info = () => {
+const Info = ({ email, phone }) => {
   const classes = useStyles();
 
   return (
@@ -66,7 +67,10 @@ const Info = () => {
             <AlternateEmailIcon className={classes.icon} fontSize="large" />
           </ListItemAvatar>
           <ListItemText
-            primary="Ivanova@mail.ru"
+            primary={
+              email ||
+              fields.find((field) => field.name === "email").placeholder
+            }
             variant="h4"
             className={classes.text}
           />
@@ -77,7 +81,10 @@ const Info = () => {
             <PhoneIcon className={classes.icon} fontSize="large" />
           </ListItemAvatar>
           <ListItemText
-            primary="Укажите номер телефона"
+            primary={
+              phone ||
+              fields.find((field) => field.name === "phone").placeholder
+            }
             className={classes.text}
           />
         </ListItem>

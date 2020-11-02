@@ -26,11 +26,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Form = () => {
+const Form = ({ store, dispatchHandleOk }) => {
   const classes = useStyles();
-  const [form, setForm] = useState(
-    fields.reduce((acc, field) => ({ ...acc, [field.name]: "" }), {})
-  );
+
+  const [form, setForm] = useState(store);
+
   const [validation, setValidation] = useState(
     fields.reduce((acc, field) => ({ ...acc, [field.name]: true }), {})
   );
@@ -96,7 +96,11 @@ const Form = () => {
             );
           })}
         </Grid>
-        <ConfirmationDialog isDisabled={!isValid} data={form} />
+        <ConfirmationDialog
+          isDisabled={!isValid}
+          data={form}
+          dispatchHandleOk={dispatchHandleOk}
+        />
       </Paper>
     </form>
   );

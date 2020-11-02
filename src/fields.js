@@ -6,11 +6,12 @@ export default [
     helperText: "Вы неверно указали имя",
     validateOptions: {
       type: "name",
+      isRequired: true,
     },
   },
   {
     name: "email",
-    placeholder: "Ivanova@mail.ru",
+    placeholder: "Укажите ваш email",
     label: "E-mail",
     helperText: "Вы неверно указали e-mail",
     validateOptions: {

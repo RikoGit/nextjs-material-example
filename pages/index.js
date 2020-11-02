@@ -1,8 +1,10 @@
 import React from "react";
+import { Provider } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 
+import store from "../src/store.js";
 import Header from "../src/Header.js";
 import Main from "../src/Main.js";
 
@@ -46,8 +48,10 @@ export default function Index() {
         alignItems="center"
         className={classes.container}
       >
-        <Header />
-        <Main />
+        <Provider store={store}>
+          <Header />
+          <Main />
+        </Provider>
       </Grid>
     </Container>
   );

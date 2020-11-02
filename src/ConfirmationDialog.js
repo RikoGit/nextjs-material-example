@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ConfirmationDialog = ({ isDisabled, data }) => {
+const ConfirmationDialog = ({ isDisabled, data, dispatchHandleOk }) => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState("test");
@@ -82,6 +82,7 @@ const ConfirmationDialog = ({ isDisabled, data }) => {
         onClose={handleClose}
         value={value}
         data={data}
+        dispatchHandleOk={dispatchHandleOk}
       />
     </div>
   );

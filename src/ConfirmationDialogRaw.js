@@ -69,7 +69,14 @@ const useStyles = makeStyles((theme) => ({
 
 function ConfirmationDialogRaw(props) {
   const classes = useStyles();
-  const { onClose, value: valueProp, open, data, ...other } = props;
+  const {
+    onClose,
+    value: valueProp,
+    open,
+    data,
+    dispatchHandleOk,
+    ...other
+  } = props;
   const [value, setValue] = useState(valueProp);
   const [openTest, setOpenTest] = useState(false);
 
@@ -86,10 +93,10 @@ function ConfirmationDialogRaw(props) {
     setOpenTest(false);
   };
 
-  async function handleOk() {
+  /*  async function handleOk() {
     const accountData = JSON.stringify(data);
     localStorage.accountData = accountData;
-    try {
+     try {
       const response = await fetch(
         "https://jsonplaceholder.typicode.com/posts",
         {
@@ -108,6 +115,7 @@ function ConfirmationDialogRaw(props) {
     onClose(value);
     setOpenTest(true);
   }
+  */
 
   return (
     <Dialog
@@ -129,11 +137,12 @@ function ConfirmationDialogRaw(props) {
             <Button
               autoFocus
               className={classes.buttonOk}
-              onClick={handleOk}
+              // onClick={handleOk}
+              onClick={() => dispatchHandleOk(data)}
               variant="contained"
               disableElevation
             >
-              Сохранить
+              {console.log(data)} Сохранить
             </Button>
             <SimpleDialog
               open={openTest}
