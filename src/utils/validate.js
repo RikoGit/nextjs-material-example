@@ -1,4 +1,7 @@
 const validate = (value, { type, validatePattern }) => {
+  console.log(
+    `value = ${value},  validatePattern = ${validatePattern}, type = ${type}`
+  );
   if (!value) return true;
 
   if (type === "name") {

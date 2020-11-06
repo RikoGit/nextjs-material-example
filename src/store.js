@@ -1,10 +1,10 @@
+import { useMemo } from "react";
 import { createStore } from "redux";
 
 import fields from "./fields.js";
 import reducer from "./reducer.js";
 
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
+/*
 const fieldData = (name) => {
   switch (name) {
     case "name": {
@@ -23,21 +23,80 @@ const fieldData = (name) => {
       "";
   }
 };
+*/
 
-let initialState = fields.reduce(
-  (acc, field) => ({ ...acc, [field.name]: fieldData(field.name) }),
-  {}
-);
+let store;
 
-if (typeof localStorage !== "undefined") {
+let initialState = {
+  user: {
+    name: "Иванова Анна Михайловна",
+    email: "Ivanova@mail.ru",
+    phone: "",
+  },
+  isEdit: false,
+  isConfirmationDialogRawOpen: false,
+  isSimpleDialogOpen: false,
+  form: fields.reduce(
+    (acc, field) => ({
+      ...acc,
+      [field.name]: { value: "", isValid: true },
+    }),
+    {}
+  ),
+};
+/*if (typeof localStorage !== "undefined") {
   if (typeof localStorage.accountData !== "undefined") {
-    initialState = { ...initialState, ...JSON.parse(localStorage.accountData) };
-    console.log(JSON.parse(localStorage.accountData));
+    initialState = {
+      ...initialState,
+      form: JSON.parse(localStorage.accountData),
+    };
+    // console.log(JSON.parse(localStorage.accountData));
   }
 }
+*/
+const initStore = (preloadedState = initialState) =>
+  createStore(reducer, preloadedState);
 
-/*if (localStorage.accountData) {
-  store = { ...store, ...JSON.parse(localStorage.accountData) };
-}*/
+/*store.subscribe(() => {
+  localStorage.accountData = JSON.stringify(store.getState().form);
+  console.log(`localStorage.accountData = ${localStorage.accountData}`);
+});*/
 
-export default createStore(reducer, initialState);
+export const initializeStore = (preloadedState) => {
+  let _store = store ?? initStore(preloadedState);
+
+  // After navigating to a page with an initial Redux state, merge that state
+  // with the current state in the store, and create a new store
+  if (preloadedState && store) {
+    _store = initStore({
+      ...store.getState(),
+      ...preloadedState,
+    });
+    // Reset the current store
+    store = undefined;
+  }
+
+  // For SSG and SSR always create a new store
+  if (typeof window === "undefined") return _store;
+  // Create the store once in the client
+  if (!store) store = _store;
+
+  return _store;
+};
+
+export function useStore(initialState) {
+  const store = useMemo(() => initializeStore(initialState), [initialState]);
+  console.log(store.getState());
+  return store;
+}
+
+/*
+const store = createStore(reducer, initialState);
+
+store.subscribe(() => {
+  localStorage.accountData = JSON.stringify(store.getState().form);
+  console.log(`localStorage.accountData = ${localStorage.accountData}`);
+});
+
+export default store;
+*/

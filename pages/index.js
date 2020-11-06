@@ -1,12 +1,20 @@
 import React from "react";
-import { Provider } from "react-redux";
+import { connect } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 
-import store from "../src/store.js";
-import Header from "../src/Header.js";
-import Main from "../src/Main.js";
+import Header from "../src/components/Header/Header.jsx";
+import Main from "../src/components/Main/Main.jsx";
+import {
+  setUser,
+  setEditForm,
+  onBlur,
+  onChange,
+  setConfirmationDialogRawOpen,
+  setConfirmationDialogRawClose,
+  setSimpleDialogClose,
+} from "../src/actions.js";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +43,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Index() {
+const Index = ({
+  user,
+  isEdit,
+  isConfirmationDialogRawOpen,
+  isSimpleDialogOpen,
+  form,
+  dispatchSetUser,
+  dispatchSetEditForm,
+  dispatchOnChange,
+  dispatchOnBlur,
+  dispatchSetConfirmationDialogRawOpen,
+  dispatchSetConfirmationDialogRawClose,
+  dispatchSetSimpleDialogClose,
+}) => {
   const classes = useStyles();
 
   return (
@@ -48,11 +69,34 @@ export default function Index() {
         alignItems="center"
         className={classes.container}
       >
-        <Provider store={store}>
-          <Header />
-          <Main />
-        </Provider>
+        <Header name={user.name} />
+        <Main
+          user={user}
+          isEdit={isEdit}
+          form={form}
+          handleOk={dispatchSetUser}
+          onClick={dispatchSetEditForm}
+          onChange={dispatchOnChange}
+          onBlur={dispatchOnBlur}
+          isConfirmationDialogRawOpen={isConfirmationDialogRawOpen}
+          onConfirmationDialogRawOpen={dispatchSetConfirmationDialogRawOpen}
+          onConfirmationDialogRawClose={dispatchSetConfirmationDialogRawClose}
+          isSimpleDialogOpen={isSimpleDialogOpen}
+          onSimpleDialogClose={dispatchSetSimpleDialogClose}
+        />
       </Grid>
     </Container>
   );
-}
+};
+
+const mapStateToProps = (state) => state;
+
+export default connect(mapStateToProps, {
+  dispatchSetUser: setUser,
+  dispatchSetEditForm: setEditForm,
+  dispatchOnChange: onChange,
+  dispatchOnBlur: onBlur,
+  dispatchSetConfirmationDialogRawOpen: setConfirmationDialogRawOpen,
+  dispatchSetConfirmationDialogRawClose: setConfirmationDialogRawClose,
+  dispatchSetSimpleDialogClose: setSimpleDialogClose,
+})(Index);

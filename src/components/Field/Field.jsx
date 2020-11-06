@@ -1,5 +1,4 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import AlternateEmailIcon from "@material-ui/icons/AlternateEmail";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import Divider from "@material-ui/core/Divider";
@@ -9,48 +8,7 @@ import PhoneIcon from "@material-ui/icons/Phone";
 import TextField from "@material-ui/core/TextField";
 import withWidth from "@material-ui/core/withWidth";
 
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    margin: "5px 18px 0 0",
-    color: theme.palette.secondary.light,
-  },
-  item: {
-    flexGrow: 1,
-    [theme.breakpoints.only("xs")]: {
-      margin: "0 0 39px 0",
-      flexGrow: "1",
-    },
-  },
-  textfield: {
-    height: "57px",
-    [theme.breakpoints.only("xs")]: {
-      width: "100%",
-    },
-  },
-  divider: {
-    margin: "0 32px 0 77px",
-    backgroundColor: "#CAE7FE",
-  },
-  field: {
-    padding: "23px 0",
-    width: "auto",
-    flexGrow: 1,
-    flexBasis: "auto",
-    [theme.breakpoints.only("xs")]: {
-      padding: 0,
-    },
-  },
-  textField: {
-    width: "100%",
-    "& .MuiFormHelperText-root": {
-      position: "absolute",
-      bottom: "-24px",
-      fontSize: "12px",
-      lineHeight: "16px",
-      fontWeight: "normal",
-    },
-  },
-}));
+import useStyles from "./styles.js";
 
 const Field = ({
   field,

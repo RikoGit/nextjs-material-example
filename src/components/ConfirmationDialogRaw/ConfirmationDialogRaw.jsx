@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CloseIcon from "@material-ui/icons/Close";
 import Dialog from "@material-ui/core/Dialog";
@@ -10,62 +9,8 @@ import Grid from "@material-ui/core/Grid";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 
-import SimpleDialog from "./SimpleDialog";
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: "absolute",
-    top: "220px",
-    width: "600px",
-    maxWidth: "600px",
-    height: "318px",
-    maxHeight: 435,
-    borderRadius: theme.palette.borderRadius,
-    textAlign: "center",
-    border: "none",
-    boxShadow: "none",
-    [theme.breakpoints.only("xs")]: {
-      margin: "0",
-      bottom: "0",
-      height: "83px",
-      top: "auto",
-      width: "100%",
-      borderRadius: "20px 20px 0 0",
-      "& .MuiDialogTitle-root": { padding: 0 },
-    },
-  },
-  title: {
-    "& > * ": {
-      padding: "60px 20px 20px 20px",
-      color: "rgba(49, 49, 49, 0.7)",
-    },
-  },
-  buttonOk: {
-    height: "50px",
-    borderRadius: "41px",
-    color: "#fff",
-    backgroundColor: theme.palette.secondary.main,
-    width: "202px",
-    boxSizing: "border-box",
-  },
-  buttonCancel: {
-    fontWeight: "600",
-    width: "202px",
-    height: "50px",
-    borderRadius: "41px",
-    border: "1px solid #00BFA5",
-    boxSizing: "border-box",
-    color: "#00BFA5",
-  },
-  item: {
-    margin: "0 0 28px",
-  },
-  close: {
-    position: "absolute",
-    right: "17px",
-    top: "17px",
-  },
-}));
+import SimpleDialog from "../SimpleDialog/SimpleDialog.jsx";
+import useStyles from "./styles.js";
 
 function ConfirmationDialogRaw(props) {
   const classes = useStyles();
@@ -73,26 +18,21 @@ function ConfirmationDialogRaw(props) {
     onClose,
     value: valueProp,
     open,
+    isSimpleDialogOpen,
+    onSimpleDialogClose,
     data,
     dispatchHandleOk,
     ...other
   } = props;
-  const [value, setValue] = useState(valueProp);
-  const [openTest, setOpenTest] = useState(false);
 
-  useEffect(() => {
+  // const [value, setValue] = useState(valueProp);
+
+  /*useEffect(() => {
     if (!open) {
       setValue(valueProp);
     }
   }, [valueProp, open]);
-
-  const handleCancel = () => {
-    onClose();
-  };
-  const handleClose = () => {
-    setOpenTest(false);
-  };
-
+  */
   /*  async function handleOk() {
     const accountData = JSON.stringify(data);
     localStorage.accountData = accountData;
@@ -137,16 +77,15 @@ function ConfirmationDialogRaw(props) {
             <Button
               autoFocus
               className={classes.buttonOk}
-              // onClick={handleOk}
-              onClick={() => dispatchHandleOk(data)}
+              onClick={dispatchHandleOk}
               variant="contained"
               disableElevation
             >
-              {console.log(data)} Сохранить
+              Сохранить
             </Button>
             <SimpleDialog
-              open={openTest}
-              onClose={handleClose}
+              open={isSimpleDialogOpen}
+              onClose={onSimpleDialogClose}
               classes={{
                 paper: classes.paper,
               }}
@@ -154,7 +93,7 @@ function ConfirmationDialogRaw(props) {
           </Grid>
           <Grid item className={classes.item}>
             <Button
-              onClick={handleCancel}
+              onClick={onClose}
               variant="outlined"
               className={classes.buttonCancel}
             >
@@ -165,7 +104,7 @@ function ConfirmationDialogRaw(props) {
         <IconButton
           className={classes.close}
           aria-label="close"
-          onClick={handleCancel}
+          onClick={onClose}
         >
           <CloseIcon />
         </IconButton>
@@ -177,7 +116,7 @@ function ConfirmationDialogRaw(props) {
 ConfirmationDialogRaw.propTypes = {
   onClose: PropTypes.func.isRequired,
   open: PropTypes.bool.isRequired,
-  value: PropTypes.string.isRequired,
+  // value: PropTypes.string.isRequired,
 };
 
 export default ConfirmationDialogRaw;

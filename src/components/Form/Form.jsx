@@ -1,34 +1,28 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import withWidth from "@material-ui/core/withWidth";
 
-import ConfirmationDialog from "./ConfirmationDialog";
-import Field from "./Field";
-import fields from "./fields";
-import validate from "./utils/validate";
+import ConfirmationDialog from "../ConfirmationDialog/ConfirmationDialog.jsx";
+import Field from "../Field/Field.jsx";
+import fields from "../../fields.js";
 
-const useStyles = makeStyles((theme) => ({
-  root: {},
-  paper: {
-    margin: "0",
-    padding: "0 0 44px 0",
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.palette.boxShadow,
-    borderRadius: theme.palette.borderRadius,
-  },
-  container: {
-    padding: "26px 70px 24px 30px",
-    [theme.breakpoints.only("xs")]: {
-      padding: "26px 23px 0",
-    },
-  },
-}));
+import useStyles from "./styles.js";
 
-const Form = ({ store, dispatchHandleOk }) => {
+const Form = ({
+  form,
+  dispatchHandleOk,
+  onChange,
+  onBlur,
+  isConfirmationDialogRawOpen,
+  onConfirmationDialogRawOpen,
+  onConfirmationDialogRawClose,
+  isSimpleDialogOpen,
+  onSimpleDialogClose,
+}) => {
   const classes = useStyles();
 
+  /*
   const [form, setForm] = useState(store);
 
   const [validation, setValidation] = useState(
@@ -56,7 +50,6 @@ const Form = ({ store, dispatchHandleOk }) => {
     });
     setValidation(newValidation);
   };
-
   const onSubmit = (event) => {
     event.preventDefault();
     setIsSubmitted(true);
@@ -64,8 +57,13 @@ const Form = ({ store, dispatchHandleOk }) => {
   };
 
   const onBlur = () => {
-    setIsBlured(true);
-    validateForm();
+      setIsBlured(true);
+      validateForm();
+  };
+  */
+
+  const onSubmit = (event) => {
+    event.preventDefault();
   };
 
   return (
@@ -84,22 +82,25 @@ const Form = ({ store, dispatchHandleOk }) => {
               <Field
                 field={field}
                 key={field.name}
-                value={form[field.name]}
+                value={form[field.name].value}
                 onBlur={onBlur}
-                onChange={(event) => {
-                  setForm({ ...form, [field.name]: event.target.value });
-                }}
+                onChange={() => onChange(field.name)}
                 isLast={isLast}
-                error={!validation[field.name]}
-                helperText={!validation[field.name] && field.helperText}
+                error={!form[field.name].isValid}
+                helperText={!form[field.name].isValid && field.helperText}
               />
             );
           })}
         </Grid>
         <ConfirmationDialog
-          isDisabled={!isValid}
+          //isDisabled={!isValid}
           data={form}
           dispatchHandleOk={dispatchHandleOk}
+          isOpen={isConfirmationDialogRawOpen}
+          onClick={onConfirmationDialogRawOpen}
+          onClose={onConfirmationDialogRawClose}
+          isSimpleDialogOpen={isSimpleDialogOpen}
+          onSimpleDialogClose={onSimpleDialogClose}
         />
       </Paper>
     </form>
